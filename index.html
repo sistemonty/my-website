@@ -1,12 +1,70 @@
 <!DOCTYPE html>
-<html lang="he">
+<html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>האתר שלי</title>
+    <title>ניהול משימות</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 70%;
+            padding: 8px;
+        }
+        button {
+            padding: 8px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #f9f9f9;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-    <h1>ברוכים הבאים לאתר שלי!</h1>
-    <p>זה האתר הראשון שלי בגיטהאב.</p>
+    <h1>ניהול משימות</h1>
+    
+    <form id="taskForm">
+        <input type="text" id="taskInput" placeholder="הוסף משימה" required>
+        <button type="submit">הוסף</button>
+    </form>
+
+    <h2>רשימת משימות:</h2>
+    <ul id="taskList"></ul>
+
+    <script>
+        const taskForm = document.getElementById('taskForm');
+        const taskInput = document.getElementById('taskInput');
+        const taskList = document.getElementById('taskList');
+
+        taskForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (taskInput.value.trim() !== '') {
+                const li = document.createElement('li');
+                li.textContent = taskInput.value;
+                taskList.appendChild(li);
+                taskInput.value = '';
+            }
+        });
+    </script>
 </body>
 </html>
